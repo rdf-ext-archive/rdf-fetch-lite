@@ -14,14 +14,12 @@ rdfFetch('http://dbpedia.org/resource/Eiffel_Tower', {formats: formats}).then((r
 }).then((dataset) => {
   let lat = dataset
     .match(null, rdf.namedNode('http://www.w3.org/2003/01/geo/wgs84_pos#lat'))
-    .toArray()
-    .shift()
+    .toArray()[0]
     .object.value
 
   let long = dataset
     .match(null, rdf.namedNode('http://www.w3.org/2003/01/geo/wgs84_pos#long'))
-    .toArray()
-    .shift()
+    .toArray()[0]
     .object.value
 
   console.log('The Eiffel Tower is located at lat: ' + lat + ' long: ' + long)
